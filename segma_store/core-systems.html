@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles1.css"> 
+  <title>Core Systems - SEGMA STORE</title>
+</head>
+<body>
+  <header class="header">
+    <div class="logo">
+      <img src="logo.ico" alt="SEGMA Logo" />
+      <span class="logo-text">SEGMA</span>
+    </div>
+    
+    <nav class="main-nav">
+      <div class="nav-icons">
+        <a href="index.html"><span class="material-icons">home</span></a>
+      </div>
+      <ul class="items">
+        <li><a href="products.php">Products</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <form class="search-form" onsubmit="return false;">
+        <input type="text" name="query" placeholder="Search..." />
+        <button type="submit"><span class="material-icons">search</span></button>
+      </form>
+    </nav>
+
+    <div class="right-icons">
+      <div class="nav-icons">
+        <a href="wishlist.html" class="wishlist-icon"><span class="material-icons">favorite</span></a>
+        <a href="cart.html"><span class="material-icons">shopping_cart</span></a>
+        <a href="login.html"><span class="material-icons">person</span></a>
+      </div>
+      <div class="menu-icon" onclick="toggleMenu()">
+        <span class="material-icons">menu</span>
+      </div>
+    </div>
+
+    <div class="dropdown-menu" id="dropdownMenu">
+      <ul>
+        <li><a href="core-systems.php">Core Systems</a></li>
+        <li><a href="visuals-hub.php">Visuals Hub</a></li>
+        <li><a href="control-center.php">Control Center</a></li>
+        <li><a href="sound-zone.php">Sound Zone</a></li>
+        <li><a href="comfort-corner.php">Comfort Corner</a></li>
+        <li><a href="gear-up.php">Gear Up</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <header class="second-header">
+    <nav>
+      <ul class="second-items">
+        <li><a href="core-systems.html">Core Systems</a></li>
+        <li><a href="visuals-hub.html">Visuals Hub</a></li>
+        <li><a href="control-center.html">Control Center</a></li>
+        <li><a href="sound-zone.html">Sound Zone</a></li>
+        <li><a href="comfort-corner.html">Comfort Corner</a></li>
+        <li><a href="gear-up.html">Gear Up</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="all-products">
+      <div class="products-header">
+        <h2>Core Systems</h2>
+        <p>High-Performance Gaming PCs and Next-Gen Consoles</p>
+      </div>
+      
+      <div class="products-container">
+        <!-- Gaming PCs Section -->
+        <div class="product">
+          <img src="p3.png" alt="Gaming PC">
+          <h3>ASUS ROG Strix Scar 16 (2024)</h3>
+          <p>14Gen Intel Core i9 14900HX 24-Cores w/ Nvidia RTX 4080 12GB DDR6 & 2.5K IPS HDR 240Hz Display</p>
+          <span class="price">1229 JOD</span>
+          <a href="cart.html">
+            <button class="buy-btn">Add to Cart</button>
+          </a>
+        </div>
+
+        <div class="product">
+          <img src="p3.png" alt="Gaming PC">
+          <h3>ASUS ROG Strix G16</h3>
+          <p>Intel Core i9-14900H, RTX 4070 8GB, 32GB RAM, 1TB SSD, 16" QHD+ 240Hz</p>
+          <span class="price">999 JOD</span>
+          <a href="cart.html">
+            <button class="buy-btn">Add to Cart</button>
+          </a>
+        </div>
+
+        <!-- Consoles Section -->
+        <div class="product">
+          <img src="p3.png" alt="Gaming Console">
+          <h3>PlayStation 5 Digital Edition</h3>
+          <p>Digital Edition Console with DualSense Controller</p>
+          <span class="price">399 JOD</span>
+          <a href="cart.html">
+            <button class="buy-btn">Add to Cart</button>
+          </a>
+        </div>
+
+        <div class="product">
+          <img src="p3.png" alt="Gaming Console">
+          <h3>Xbox Series X</h3>
+          <p>1TB SSD, 4K Gaming, HDR, Ray Tracing</p>
+          <span class="price">449 JOD</span>
+          <a href="cart.html">
+            <button class="buy-btn">Add to Cart</button>
+          </a>
+        </div>
+
+        <!-- Gaming Laptops Section -->
+        <div class="product">
+          <img src="p3.png" alt="Gaming Laptop">
+          <h3>ASUS ROG Zephyrus G14</h3>
+          <p>AMD Ryzen 9 7940HS, RTX 4060 8GB, 32GB RAM, 1TB SSD, 14" QHD+ 165Hz</p>
+          <span class="price">899 JOD</span>
+          <a href="cart.html">
+            <button class="buy-btn">Add to Cart</button>
+          </a>
+        </div>
+
+        <div class="product">
+          <img src="p3.png" alt="Gaming Laptop">
+          <h3>ASUS ROG Flow X13</h3>
+          <p>AMD Ryzen 9 7940HS, RTX 4050 6GB, 32GB RAM, 1TB SSD, 13.4" 4K Touch</p>
+          <span class="price">799 JOD</span>
+          <a href="cart.html">
+            <button class="buy-btn">Add to Cart</button>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <hr>
+    <nav>
+      <a href="contact.html">Contact</a> |
+      <a href="about.html">About</a> |
+      <a href="faq.html">FAQ</a> |
+      <a href="terms.html">Terms</a>
+    </nav>
+    <p>&copy; 2025 SEGMA STORE</p>
+  </footer>
+
+  <script>
+    document.querySelector('.search-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const query = this.querySelector('input[name="query"]').value.trim();
+      if (query) {
+        console.log("Search for:", query); 
+      }
+    });
+
+    function toggleMenu() {
+      var menu = document.getElementById('dropdownMenu');
+      if (menu.style.display === 'block') {
+        menu.style.display = 'none';
+      } else {
+        menu.style.display = 'block';
+      }
+    }
+  </script>
+  <script src="js/scripts.js"></script>
+</body>
+</html> 

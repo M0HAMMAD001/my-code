@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles1.css">
+  <title>Checkout - SEGMA STORE</title>
+  <style>
+    .checkout-progress {
+      display: flex;
+      justify-content: space-between;
+      max-width: 800px;
+      margin: 2rem auto;
+      position: relative;
+      padding: 0 1rem;
+    }
+
+    .checkout-progress::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: #e0e0e0;
+      z-index: 1;
+    }
+
+    .progress-step {
+      position: relative;
+      z-index: 2;
+      background: #fff;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 2px solid #e0e0e0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      color: #666;
+    }
+
+    .progress-step.active {
+      border-color: #b8d7e0;
+      color: #b8d7e0;
+    }
+
+    .progress-step.completed {
+      border-color: #4CAF50;
+      color: #4CAF50;
+    }
+
+    .progress-label {
+      position: absolute;
+      top: 45px;
+      left: 50%;
+      transform: translateX(-50%);
+      white-space: nowrap;
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    .checkout-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+      display: grid;
+      grid-template-columns: 1fr 400px;
+      gap: 2rem;
+    }
+
+    .checkout-forms {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .form-section {
+      margin-bottom: 2rem;
+    }
+
+    .form-section h3 {
+      color: #333;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid #b8d7e0;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: #555;
+      font-weight: 500;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 0.8rem;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 1rem;
+      transition: border-color 0.3s;
+    }
+
+    .form-group input:focus {
+      border-color: #b8d7e0;
+      outline: none;
+      box-shadow: 0 0 0 2px rgba(184, 215, 224, 0.2);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .order-summary {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 2rem;
+    }
+
+    .summary-items {
+      margin: 1.5rem 0;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 1rem;
+    }
+
+    .summary-item {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+      color: #555;
+    }
+
+    .summary-totals {
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #eee;
+    }
+
+    .summary-totals .summary-item {
+      font-weight: 500;
+    }
+
+    .summary-totals .total {
+      font-size: 1.2rem;
+      color: #333;
+      font-weight: bold;
+    }
+
+    .place-order-btn {
+      width: 100%;
+      padding: 1rem;
+      background: #b8d7e0;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      margin-top: 1.5rem;
+    }
+
+    .place-order-btn:hover {
+      background: #9bc5d1;
+    }
+
+    .payment-methods {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+
+    .payment-method {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 1.5rem 1rem;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s;
+      background: #fff;
+    }
+
+    .payment-method:hover {
+      border-color: #b8d7e0;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .payment-method.selected {
+      border-color: #b8d7e0;
+      background: rgba(184, 215, 224, 0.1);
+    }
+
+    .payment-method img {
+      height: 32px;
+      margin-bottom: 0.8rem;
+    }
+
+    .payment-method span {
+      display: block;
+      font-weight: 500;
+      color: #333;
+    }
+
+    select {
+      width: 100%;
+      padding: 0.8rem;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 1rem;
+      background-color: #fff;
+      cursor: pointer;
+      transition: border-color 0.3s;
+    }
+
+    select:focus {
+      border-color: #b8d7e0;
+      outline: none;
+      box-shadow: 0 0 0 2px rgba(184, 215, 224, 0.2);
+    }
+
+    .crypto-amount {
+      background: #f8f9fa;
+      padding: 1rem;
+      border-radius: 4px;
+      text-align: center;
+    }
+
+    .crypto-amount .amount {
+      display: block;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 0.3rem;
+    }
+
+    .crypto-amount .equivalent {
+      color: #666;
+      font-size: 0.9rem;
+    }
+
+    .payment-instructions {
+      background: #f8f9fa;
+      padding: 1.5rem;
+      border-radius: 4px;
+      margin-top: 1rem;
+    }
+
+    .payment-instructions h4 {
+      color: #333;
+      margin-bottom: 1rem;
+    }
+
+    .payment-instructions ol {
+      margin: 0;
+      padding-left: 1.2rem;
+      color: #555;
+    }
+
+    .payment-instructions li {
+      margin-bottom: 0.5rem;
+    }
+
+    @media (max-width: 1024px) {
+      .checkout-container {
+        grid-template-columns: 1fr;
+      }
+      
+      .order-summary {
+        position: static;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+      
+      .payment-methods {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="logo">
+      <img src="logo.ico" alt="SEGMA Logo" />
+      <span class="logo-text">SEGMA</span>
+    </div>
+    
+    <nav class="main-nav">
+      <div class="nav-icons">
+        <a href="index.html"><span class="material-icons">home</span></a>
+      </div>
+      <ul class="items">
+        <li><a href="products.php">Products</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <form class="search-form" onsubmit="return false;">
+        <input type="text" name="query" placeholder="Search..." />
+        <button type="submit"><span class="material-icons">search</span></button>
+      </form>
+    </nav>
+
+    <div class="right-icons">
+      <div class="nav-icons">
+        <a href="wishlist.html" class="wishlist-icon"><span class="material-icons">favorite</span></a>
+        <a href="cart.html"><span class="material-icons">shopping_cart</span></a>
+        <a href="login.html"><span class="material-icons">person</span></a>
+      </div>
+      <div class="menu-icon" onclick="toggleMenu()">
+        <span class="material-icons">menu</span>
+      </div>
+    </div>
+
+    <div class="dropdown-menu" id="dropdownMenu">
+      <ul>
+        <li><a href="core-systems.php">Core Systems</a></li>
+        <li><a href="visuals-hub.php">Visuals Hub</a></li>
+        <li><a href="control-center.php">Control Center</a></li>
+        <li><a href="sound-zone.php">Sound Zone</a></li>
+        <li><a href="comfort-corner.php">Comfort Corner</a></li>
+        <li><a href="gear-up.php">Gear Up</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+    <section class="checkout-section">
+      <div class="checkout-progress">
+        <div class="progress-step completed">
+          1
+          <span class="progress-label">Cart</span>
+        </div>
+        <div class="progress-step active">
+          2
+          <span class="progress-label">Details</span>
+        </div>
+        <div class="progress-step">
+          3
+          <span class="progress-label">Payment</span>
+        </div>
+        <div class="progress-step">
+          4
+          <span class="progress-label">Confirmation</span>
+        </div>
+      </div>
+
+      <div class="checkout-container">
+        <div class="checkout-forms">
+          <!-- Shipping Information -->
+          <div class="form-section">
+            <h3>Shipping Information</h3>
+            <form id="shipping-form">
+              <div class="form-group">
+                <label for="full-name">Full Name</label>
+                <input type="text" id="full-name" name="full-name" required placeholder="Enter your full name">
+              </div>
+              
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required placeholder="Enter your email">
+              </div>
+              
+              <div class="form-group">
+                <label for="phone">Phone</label>
+                <input type="tel" id="phone" name="phone" required placeholder="Enter your phone number">
+              </div>
+              
+              <div class="form-group">
+                <label for="address">Address</label>
+                <input type="text" id="address" name="address" required placeholder="Enter your street address">
+              </div>
+              
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="city">City</label>
+                  <input type="text" id="city" name="city" required placeholder="Enter your city">
+                </div>
+                
+                <div class="form-group">
+                  <label for="postal-code">Postal Code</label>
+                  <input type="text" id="postal-code" name="postal-code" required placeholder="Enter postal code">
+                </div>
+              </div>
+            </form>
+          </div>
+
+          <!-- Payment Information -->
+          <div class="form-section">
+            <h3>Payment Information</h3>
+            <div class="payment-methods">
+              <div class="payment-method selected">
+                <img src="bitcoin.png" alt="Bitcoin">
+                <span>Bitcoin</span>
+              </div>
+              <div class="payment-method">
+                <img src="ethereum.png" alt="Ethereum">
+                <span>Ethereum</span>
+              </div>
+              <div class="payment-method">
+                <img src="usdt.png" alt="USDT">
+                <span>USDT</span>
+              </div>
+              <div class="payment-method">
+                <img src="usdc.png" alt="USDC">
+                <span>USDC</span>
+              </div>
+            </div>
+
+            <form id="payment-form">
+              <div class="form-group">
+                <label for="crypto-address">Your Crypto Wallet Address</label>
+                <input type="text" id="crypto-address" name="crypto-address" required placeholder="Enter your wallet address">
+              </div>
+              
+              <div class="form-group">
+                <label for="crypto-network">Network</label>
+                <select id="crypto-network" name="crypto-network" required>
+                  <option value="">Select Network</option>
+                  <option value="bitcoin">Bitcoin Network</option>
+                  <option value="ethereum">Ethereum Network</option>
+                  <option value="bsc">Binance Smart Chain</option>
+                  <option value="polygon">Polygon Network</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label>Payment Amount</label>
+                <div class="crypto-amount">
+                  <span class="amount">0.0125 BTC</span>
+                  <span class="equivalent">≈ 308 JOD</span>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="payment-instructions">
+                  <h4>Payment Instructions:</h4>
+                  <ol>
+                    <li>Select your preferred cryptocurrency</li>
+                    <li>Enter your wallet address</li>
+                    <li>Select the appropriate network</li>
+                    <li>Send the exact amount shown above</li>
+                    <li>Wait for network confirmation</li>
+                  </ol>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <div class="order-summary">
+          <h3>Order Summary</h3>
+          <div class="summary-items">
+            <div class="summary-item">
+              <span>Arozzi Vernazza Gaming Chair</span>
+              <span>249 JOD</span>
+            </div>
+            <div class="summary-item">
+              <span>ROG Sheath Mousepad</span>
+              <span>49 JOD</span>
+            </div>
+          </div>
+          
+          <div class="summary-totals">
+            <div class="summary-item">
+              <span>Subtotal</span>
+              <span>298 JOD</span>
+            </div>
+            <div class="summary-item">
+              <span>Shipping</span>
+              <span>10 JOD</span>
+            </div>
+            <div class="summary-item total">
+              <span>Total</span>
+              <span>308 JOD</span>
+            </div>
+          </div>
+          
+          <button type="submit" class="place-order-btn">Place Order</button>
+          
+          <div style="margin-top: 1rem; text-align: center; color: #666; font-size: 0.9rem;">
+            <span class="material-icons" style="vertical-align: middle; font-size: 1.2rem;">lock</span>
+            Secure Checkout
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <hr>
+    <nav>
+      <a href="contact.html">Contact</a> |
+      <a href="about.html">About</a> |
+      <a href="faq.html">FAQ</a> |
+      <a href="terms.html">Terms</a>
+    </nav>
+    <p>&copy; 2025 SEGMA STORE</p>
+  </footer>
+
+  <script>
+    document.querySelector('.search-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const query = this.querySelector('input[name="query"]').value.trim();
+      if (query) {
+        console.log("Search for:", query); 
+      }
+    });
+
+    function toggleMenu() {
+      var menu = document.getElementById('dropdownMenu');
+      if (menu.style.display === 'block') {
+        menu.style.display = 'none';
+      } else {
+        menu.style.display = 'block';
+      }
+    }
+
+    // Payment method selection
+    document.querySelectorAll('.payment-method').forEach(method => {
+      method.addEventListener('click', function() {
+        document.querySelectorAll('.payment-method').forEach(m => m.classList.remove('selected'));
+        this.classList.add('selected');
+        
+        // Update payment amount based on selected cryptocurrency
+        const crypto = this.querySelector('span').textContent.toLowerCase();
+        const amounts = {
+          'bitcoin': '0.0125 BTC',
+          'ethereum': '0.185 ETH',
+          'usdt': '308 USDT',
+          'usdc': '308 USDC'
+        };
+        document.querySelector('.amount').textContent = amounts[crypto];
+      });
+    });
+
+    // Network selection handler
+    document.getElementById('crypto-network').addEventListener('change', function(e) {
+      const network = e.target.value;
+      const addressInput = document.getElementById('crypto-address');
+      
+      // Update placeholder based on network
+      const placeholders = {
+        'bitcoin': 'Enter your Bitcoin address',
+        'ethereum': 'Enter your Ethereum address',
+        'bsc': 'Enter your BSC address',
+        'polygon': 'Enter your Polygon address'
+      };
+      
+      addressInput.placeholder = placeholders[network] || 'Enter your wallet address';
+    });
+  </script>
+  <script src="scripts.js"></script>
+</body>
+</html>

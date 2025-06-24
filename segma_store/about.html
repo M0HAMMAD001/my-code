@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles1.css">
+  <title>About Us - SEGMA STORE</title>
+  <style>
+    body {
+        font-family: 'Merriweather', serif;
+        line-height: 1.6;
+        background-color: #0d0c0c;
+        color: #b5bbba;
+        padding: 0;
+        margin: 0;
+    }
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+    }
+    .header { /* Copied from index.html for consistency */
+        background-color: black;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        padding: 1rem 0;
+        margin-bottom: 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 2rem; /* Added padding for better spacing */
+    }
+    .logo {
+        display: flex;
+        align-items: center;
+    }
+    .logo img {
+        height: 40px; /* Adjust as needed */
+        margin-right: 10px;
+    }
+    .logo-text {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: #b8d7e0;
+    }
+    .main-nav ul.items {
+        list-style: none;
+        display: flex;
+        gap: 1.5rem;
+    }
+    .main-nav a {
+        color: #b5bbba;
+        text-decoration: none;
+        font-size: 1rem;
+    }
+    .main-nav a:hover {
+        color: #b8d7e0;
+    }
+    .right-icons .nav-icons a, .menu-icon .material-icons {
+        color: #b5bbba;
+        margin-left: 1rem;
+        text-decoration: none;
+    }
+    .right-icons .nav-icons a:hover, .menu-icon .material-icons:hover {
+        color: #b8d7e0;
+    }
+    .menu-icon {
+        display: none; /* Assuming menu icon is for mobile, hide on desktop */
+    }
+    .dropdown-menu {
+        display: none; /* Initially hidden */
+        position: absolute;
+        top: 60px; /* Adjust as needed */
+        right: 2rem;
+        background-color: #222;
+        border: 1px solid #444;
+        border-radius: 8px;
+        padding: 1rem;
+        z-index: 1000;
+    }
+    .dropdown-menu ul {
+        list-style: none;
+    }
+    .dropdown-menu ul li a {
+        color: #b5bbba;
+        text-decoration: none;
+        display: block;
+        padding: 0.5rem 0;
+    }
+    .dropdown-menu ul li a:hover {
+        color: #b8d7e0;
+    }
+    .about-section { /* Specific styling for the about section content */
+        background: #333;
+        padding: 2rem;
+        border-radius: 12px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        border: 1px solid #444;
+        margin-top: 2rem; /* Added margin for separation from header */
+    }
+    .about-section h2 {
+        color: #b8d7e0;
+        text-align: center;
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
+    }
+    .about-section p {
+        color: #ccc;
+        font-size: 1rem;
+        line-height: 1.8;
+        text-align: justify;
+    }
+    footer {
+        text-align: center;
+        padding: 2rem 0;
+        margin-top: 2rem;
+        color: #777;
+        font-size: 0.9rem;
+        border-top: 1px solid #444;
+    }
+
+    @media (max-width: 768px) {
+        .main-nav ul.items {
+            display: none; /* Hide main nav items on mobile */
+        }
+        .menu-icon {
+            display: block; /* Show menu icon on mobile */
+            cursor: pointer;
+        }
+        .header {
+            padding: 1rem; /* Adjust padding for mobile */
+        }
+         .right-icons .nav-icons { /* Hide some icons on mobile if needed or adjust layout */
+            display: none;
+        }
+        .dropdown-menu.active { /* Style for when dropdown is shown */
+            display: block;
+        }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="logo">
+      <img src="logo.ico" alt="SEGMA Logo" />
+      <span class="logo-text">SEGMA</span>
+    </div>
+    
+    <nav class="main-nav">
+      <div class="nav-icons">
+      <a href="index.html"><span class="material-icons">home</span></a>
+    </div>
+      <ul class="items">
+        <li><a href="products.php">Products</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <!-- Assuming search form is part of the standard header from index.html -->
+      <form class="search-form" onsubmit="performSearch(event)">
+        <input type="text" name="query" id="searchQuery" placeholder="Search..." />
+        <button type="submit"><span class="material-icons">search</span></button>
+      </form>
+    </nav>
+  
+    <div class="right-icons">
+    <div class="nav-icons">
+      <a href="wishlist.html" class="wishlist-icon"><span class="material-icons">favorite</span></a>
+      <a href="cart.html"><span class="material-icons">shopping_cart</span></a>
+      <a href="login.html"><span class="material-icons">person</span></a>
+    </div>
+    <div class="menu-icon" onclick="toggleMenu()">
+      <span class="material-icons">menu</span>
+    </div>
+  </div>
+  
+    <div class="dropdown-menu" id="dropdownMenu">
+      <ul>
+        <li><a href="core-systems.php">Core Systems</a></li>
+        <li><a href="visuals-hub.php">Visuals Hub</a></li>
+        <li><a href="control-center.php">Control Center</a></li>
+        <li><a href="sound-zone.php">Sound Zone</a></li>
+        <li><a href="comfort-corner.php">Comfort Corner</a></li>
+        <li><a href="gear-up.php">Gear Up</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <div class="container">
+    <main>
+      <section class="about-section">
+        <h2>About Us</h2>
+        <p>SEGMA STORE is dedicated to providing the best gaming PCs and accessories to our customers. Our mission is to deliver high-quality products and exceptional customer service. We believe in the power of gaming to connect people and provide immersive experiences. Our team is passionate about technology and committed to helping you build your ultimate gaming setup.</p>
+        <p>Founded in 2024, SEGMA STORE started as a small project by a group of gaming enthusiasts who wanted to make high-performance gaming gear more accessible. We've since grown into a trusted source for gamers, offering a wide selection of components, peripherals, and fully assembled systems. We carefully curate our product offerings to ensure they meet our high standards for quality, performance, and reliability.</p>
+        <p>Thank you for choosing SEGMA STORE. We're excited to be a part of your gaming journey!</p>
+      </section>
+    </main>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 SEGMA STORE</p>
+  </footer>
+  <script>
+    // Basic toggleMenu function (if not already in scripts.js or if scripts.js is not loaded)
+    function toggleMenu() {
+      const dropdownMenu = document.getElementById('dropdownMenu');
+      dropdownMenu.classList.toggle('active');
+    }
+
+    // Placeholder for performSearch if it's not globally available
+    function performSearch(event) {
+        event.preventDefault();
+        const query = document.getElementById('searchQuery').value;
+        if(query) {
+            // In a real scenario, you would redirect to a search results page
+            // For example: window.location.href = 'search.html?query=' + encodeURIComponent(query);
+            alert('Searching for: ' + query); // Placeholder action
+        }
+    }
+    // Add script imports if needed, for example, if scripts.js contains performSearch
+    // <script src="js/scripts.js"></script> 
+    // Ensure scripts.js is correctly linked or functions are defined here.
+  </script>
+</body>
+</html>

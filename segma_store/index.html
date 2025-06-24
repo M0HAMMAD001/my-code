@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles1.css">
+  <style>
+    .comment-section {
+      margin: 20px;
+      padding: 20px;
+      background: #f5f5f5;
+    }
+    .comment {
+      margin: 10px 0;
+      padding: 10px;
+      background: white;
+    }
+    #searchResults {
+      margin: 20px;
+      padding: 10px;
+      background: #fff;
+      border: 1px solid #ddd;
+    }
+    .welcome-message {
+      padding: 10px;
+      margin: 10px;
+      background: #e8f5e9;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <!--<header class="header">
+    <div class="logo">
+      <img src="logo.ico" alt="SEGMA Logo">
+      <span class="logo-text">SEGMA</span>
+    </div>
+    <div class="nav-icons">
+      <a href="index.html"><span class="material-icons">home</span></a>
+    </div>
+    <nav>
+      <ul class="items">
+        <li><a href="products.html">Products</a></li>
+        <li><a href="register.html">Register</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="nav-icons">
+      <a href="cart.html"><span class="material-icons">shopping_cart</span></a>
+      <a href="login.html"><span class="material-icons">person</span></a>
+    </div>
+    <div class="menu-icon" onclick="toggleMenu()">
+      <span class="material-icons">menu</span>
+    </div>
+    <div class="dropdown-menu" id="dropdownMenu">
+      <ul>
+        <li><a href="core-systems.html">Core Systems</a></li>
+        <li><a href="visuals-hub.html">Visuals Hub</a></li>
+        <li><a href="control-center.html">Control Center</a></li>
+        <li><a href="sound-zone.html">Sound Zone</a></li>
+        <li><a href="comfort-corner.html">Comfort Corner</a></li>
+        <li><a href="gear-up.html">Gear Up</a></li>
+      </ul>
+    </div>
+  </header>-->
+
+  <!--<header class="header">
+  <div class="logo">
+    <img src="logo.ico" alt="SEGMA Logo">
+    <span class="logo-text">SEGMA</span>
+  </div>
+
+  <div class="nav-icons">
+    <a href="index.html"><span class="material-icons">home</span></a>
+  </div>-->
+
+  <!--<nav>
+    <ul class="items">
+      <li><a href="products.html">Products</a></li>
+      <li><a href="register.html">Register</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>hereee&&&-->
+  <!--<nav class="main-nav">
+  <ul class="items">
+    <li><a href="products.html">Products</a></li>
+    <li><a href="register.html">Register</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>-->
+  <!--<form class="search-form" action="search.html" method="GET">
+    <input type="text" name="query" placeholder="Search..." />
+    <button type="submit"><span class="material-icons">search</span></button>
+  </form> here&&&-->
+  <!--<form class="search-form" onsubmit="return false;">
+  <input type="text" name="query" placeholder="Search..." />
+  <button type="submit"><span class="material-icons">search</span></button>
+</form>
+
+
+</nav>
+
+
+  <div class="right-icons">
+    <div class="nav-icons">
+      <a href="cart.html"><span class="material-icons">shopping_cart</span></a>
+      <a href="login.html"><span class="material-icons">person</span></a>
+    </div>
+    <div class="menu-icon" onclick="toggleMenu()">
+      <span class="material-icons">menu</span>
+    </div>
+  </div>
+
+  <div class="dropdown-menu" id="dropdownMenu">
+    <ul>
+      <li><a href="core-systems.html">Core Systems</a></li>
+      <li><a href="visuals-hub.html">Visuals Hub</a></li>
+      <li><a href="control-center.html">Control Center</a></li>
+      <li><a href="sound-zone.html">Sound Zone</a></li>
+      <li><a href="comfort-corner.html">Comfort Corner</a></li>
+      <li><a href="gear-up.html">Gear Up</a></li>
+    </ul>
+  </div>
+</header>-->
+<header class="header">
+  <div class="logo">
+    <img src="logo.ico" alt="SEGMA Logo" />
+    <span class="logo-text">SEGMA</span>
+  </div>
+  
+  <nav class="main-nav">
+    <div class="nav-icons">
+    <a href="index.html"><span class="material-icons">home</span></a>
+  </div>
+    <ul class="items">
+      <li><a href="products.php">Products</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <form class="search-form" onsubmit="performSearch(event)">
+      <input type="text" name="query" id="searchQuery" placeholder="Search..." />
+      <button type="submit"><span class="material-icons">search</span></button>
+    </form>
+  </nav>
+
+  <div class="right-icons">
+  <div class="nav-icons">
+    <a href="wishlist.html" class="wishlist-icon"><span class="material-icons">favorite</span></a>
+    <a href="cart.html"><span class="material-icons">shopping_cart</span></a>
+    <a href="login.html"><span class="material-icons">person</span></a>
+  </div>
+  <div class="menu-icon" onclick="toggleMenu()">
+    <span class="material-icons">menu</span>
+  </div>
+</div>
+
+  <div class="dropdown-menu" id="dropdownMenu">
+    <ul>
+      <li><a href="core-systems.php">Core Systems</a></li>
+      <li><a href="visuals-hub.php">Visuals Hub</a></li>
+      <li><a href="control-center.php">Control Center</a></li>
+      <li><a href="sound-zone.php">Sound Zone</a></li>
+      <li><a href="comfort-corner.php">Comfort Corner</a></li>
+      <li><a href="gear-up.php">Gear Up</a></li>
+    </ul>
+  </div>
+</header>
+
+
+  <img src="pic8.gif" style="width: 100%; height: 64vh;"> 
+  <main>
+    <!-- Vulnerable welcome message that reflects URL parameter -->
+    <div id="welcomeMessage" class="welcome-message"></div>
+
+    <section class="hero">
+      <p style="text-align: center;">Join thousands of gamers upgrading their gear with SEGMA STORE—performance you can trust</p>
+      <a href="products.php" class="btn">Shop Now</a>
+    </section>
+    
+    <!-- Add a vulnerable search results section -->
+    <div id="searchResults"></div>
+
+    <!-- Add a vulnerable comment section -->
+    <section class="comment-section">
+      <h2>Customer Comments</h2>
+      <div id="comments"></div>
+      <form onsubmit="addComment(event)">
+        <textarea id="commentText" placeholder="Leave a comment..." rows="4" style="width: 100%"></textarea>
+        <button type="submit">Post Comment</button>
+      </form>
+    </section>
+
+    <section class="new-seller">
+      <div class="seller-header">
+            <h2>FRESH OFF THE LINE</h2>
+            <p>Check out our latest releases to secure the most up-to-date upgrades for your setup.</p>
+      </div>
+      <div class="products-container">
+       <div class="product">
+          <img src="p3.png" alt="Gaming Mouse">
+          <h3>ASUS ROG Strix Scar 16 (2024) G634JZR NEW  </h3>
+          <p>14Gen Intel Core i9 14900HX 24-Cores w/ Nvidia RTX 4080 12GB DDR6 & 2.5K IPS HDR 240Hz Display - Off Black</p>
+          <span class="price">1229 JOD</span>
+          <a href="cart.html">
+            <button class="buy-btn">BUY</button>
+          </a>
+       
+        
+        </div>
+
+        <div class="product">
+          <img src="p2.png" alt="Mechanical Keyboard">
+          <h3>Arozzi Vernazza Soft Fabric Gaming Chair</h3>
+          <p>Multi-Dimensional Armrests Rocking & Lock-Tilt Function Adjustable Height & Backrest 3D Armrests.</p>
+          <span class="price">249 JOD</span>
+          <a href="cart.html">
+            <button class="buy-btn">BUY</button>
+          </a>
+        </div>
+      </div>
+    </section>
+  
+  </main>
+
+  <footer>
+    <hr>
+    <nav>
+        <a href="contact.html">Contact</a> |
+        <a href="about.html">About</a> |
+        <a href="faq.html">FAQ</a> |
+        <a href="terms.html">Terms</a>
+    </nav>
+    <p>&copy; 2025 SEGMA STORE</p>
+  </footer>
+  <script>
+    // Vulnerable search function that reflects user input without sanitization
+    function performSearch(e) {
+      e.preventDefault();
+      const query = document.getElementById('searchQuery').value;
+      const resultsDiv = document.getElementById('searchResults');
+      resultsDiv.innerHTML = '<h3>Search Results for: ' + query + '</h3>';
+      // Example XSS payload: <style>body { background: red; }</style>
+      // Or: <img src="x" onerror="document.body.style.background='red'">
+    }
+
+    // Vulnerable comment system that stores and displays unfiltered HTML
+    let comments = [];
+    function addComment(e) {
+      e.preventDefault();
+      const commentText = document.getElementById('commentText').value;
+      comments.push(commentText);
+      displayComments();
+      document.getElementById('commentText').value = '';
+      // Example XSS payload: <style onload="document.body.style.filter='invert(1)'">
+      // Or: <img src="x" onerror="document.querySelectorAll('img').forEach(img => img.style.filter='grayscale(1)')">
+    }
+
+    function displayComments() {
+      const commentsDiv = document.getElementById('comments');
+      commentsDiv.innerHTML = comments.map(comment => 
+        '<div class="comment">' + comment + '</div>'
+      ).join('');
+    }
+
+    // Vulnerable welcome message that reflects URL parameters
+    function displayWelcomeMessage() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const name = urlParams.get('name');
+      if (name) {
+        document.getElementById('welcomeMessage').innerHTML = 'Welcome, ' + name + '!';
+        // Example URL payload: ?name=<div style="position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.8);color:white;text-align:center;padding-top:45vh;z-index:9999">Site Hacked</div>
+      }
+    }
+
+    // Call on page load
+    displayWelcomeMessage();
+  </script>
+
+
+
+  <script src="scripts.js"></script>
+  <script>
+    function toggleMenu() {
+      var menu = document.getElementById('dropdownMenu');
+      if (menu.style.display === 'block') {
+        menu.style.display = 'none';
+      } else {
+        menu.style.display = 'block';
+      }
+    }
+  </script>
+</body>
+</html>

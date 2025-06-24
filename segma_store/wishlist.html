@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles1.css"> 
+</head>
+<body>
+  <header class="header">
+  <div class="logo">
+    <img src="logo.ico" alt="SEGMA Logo" />
+    <span class="logo-text">SEGMA</span>
+  </div>
+  
+  <nav class="main-nav">
+    <div class="nav-icons">
+    <a href="index.html"><span class="material-icons">home</span></a>
+  </div>
+    <ul class="items">
+      <li><a href="products.php">Products</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <form class="search-form" onsubmit="return false;">
+      <input type="text" name="query" placeholder="Search..." />
+      <button type="submit"><span class="material-icons">search</span></button>
+    </form>
+  </nav>
+
+  <!--<div class="right-icons">
+    <div class="nav-icons">
+      <a href="cart.html"><span class="material-icons">shopping_cart</span></a>
+      <a href="login.html"><span class="material-icons">person</span></a>
+    </div>
+    <div class="menu-icon" onclick="toggleMenu()">
+      <span class="material-icons">menu</span>
+    </div>
+  </div>-->
+  <div class="right-icons">
+  <div class="nav-icons">
+    <a href="wishlist.html" class="wishlist-icon"><span class="material-icons">favorite</span></a>
+    <a href="cart.html"><span class="material-icons">shopping_cart</span></a>
+    <a href="login.html"><span class="material-icons">person</span></a>
+  </div>
+  <div class="menu-icon" onclick="toggleMenu()">
+    <span class="material-icons">menu</span>
+  </div>
+</div>
+
+
+  <div class="dropdown-menu" id="dropdownMenu">
+    <ul>
+      <li><a href="core-systems.php">Core Systems</a></li>
+      <li><a href="visuals-hub.php">Visuals Hub</a></li>
+      <li><a href="control-center.php">Control Center</a></li>
+      <li><a href="sound-zone.php">Sound Zone</a></li>
+      <li><a href="comfort-corner.php">Comfort Corner</a></li>
+      <li><a href="gear-up.php">Gear Up</a></li>
+    </ul>
+  </div>
+</header>
+
+  <main>
+    <section class="wishlist">
+      <h2>Your Wishlist</h2>
+      <div class="wishlist-item">
+        <p>No items in your wishlist yet. Browse our <a href="products.php">products</a> and add your favorites!</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <hr>
+    <nav>
+        <a href="contact.html">Contact</a> |
+        <a href="about.html">About</a> |
+        <a href="faq.html">FAQ</a> |
+        <a href="terms.html">Terms</a>
+    </nav>
+    <p>&copy; 2025 SEGMA STORE</p>
+  </footer>
+  <script>
+  document.querySelector('.search-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    const query = this.querySelector('input[name="query"]').value.trim();
+    if (query) {
+      console.log("Search for:", query); 
+    }
+  });
+</script>
+
+
+
+  <script src="js/scripts.js"></script>
+  <script>
+    function toggleMenu() {
+      var menu = document.getElementById('dropdownMenu');
+      if (menu.style.display === 'block') {
+        menu.style.display = 'none';
+      } else {
+        menu.style.display = 'block';
+      }
+    }
+  </script>
+</body>
+</html>

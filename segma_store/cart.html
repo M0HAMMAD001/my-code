@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles1.css">
+  <title>Shopping Cart - SEGMA STORE</title>
+</head>
+<body>
+  <header class="header">
+    <div class="logo">
+      <img src="logo.ico" alt="SEGMA Logo" />
+      <span class="logo-text">SEGMA</span>
+    </div>
+    
+    <nav class="main-nav">
+      <div class="nav-icons">
+        <a href="index.html"><span class="material-icons">home</span></a>
+      </div>
+      <ul class="items">
+        <li><a href="products.php">Products</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <form class="search-form" onsubmit="return false;">
+        <input type="text" name="query" placeholder="Search..." />
+        <button type="submit"><span class="material-icons">search</span></button>
+      </form>
+    </nav>
+
+    <div class="right-icons">
+      <div class="nav-icons">
+        <a href="wishlist.html" class="wishlist-icon"><span class="material-icons">favorite</span></a>
+        <a href="cart.html"><span class="material-icons">shopping_cart</span></a>
+        <a href="login.html"><span class="material-icons">person</span></a>
+      </div>
+      <div class="menu-icon" onclick="toggleMenu()">
+        <span class="material-icons">menu</span>
+      </div>
+    </div>
+
+    <div class="dropdown-menu" id="dropdownMenu">
+      <ul>
+        <li><a href="core-systems.php">Core Systems</a></li>
+        <li><a href="visuals-hub.php">Visuals Hub</a></li>
+        <li><a href="control-center.php">Control Center</a></li>
+        <li><a href="sound-zone.php">Sound Zone</a></li>
+        <li><a href="comfort-corner.php">Comfort Corner</a></li>
+        <li><a href="gear-up.php">Gear Up</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+    <section class="cart-section">
+      <h2>Shopping Cart</h2>
+      
+      <div class="cart-container">
+        <div class="cart-items">
+          <!-- Sample Cart Items -->
+          <div class="cart-item">
+            <img src="p2.png" alt="Gaming Chair">
+            <div class="item-details">
+              <h3>Arozzi Vernazza Soft Fabric Gaming Chair</h3>
+              <p>Multi-Dimensional Armrests, Rocking & Lock-Tilt Function</p>
+              <div class="item-price">249 JOD</div>
+            </div>
+            <div class="quantity-controls">
+              <button class="quantity-btn">-</button>
+              <input type="number" value="1" min="1" max="10">
+              <button class="quantity-btn">+</button>
+            </div>
+            <button class="remove-btn"><span class="material-icons">delete</span></button>
+          </div>
+
+          <div class="cart-item">
+            <img src="p8.png" alt="Gaming Mousepad">
+            <div class="item-details">
+              <h3>ROG Sheath</h3>
+              <p>Extended Gaming Mousepad with RGB Lighting</p>
+              <div class="item-price">49 JOD</div>
+            </div>
+            <div class="quantity-controls">
+              <button class="quantity-btn">-</button>
+              <input type="number" value="1" min="1" max="10">
+              <button class="quantity-btn">+</button>
+            </div>
+            <button class="remove-btn"><span class="material-icons">delete</span></button>
+          </div>
+        </div>
+
+        <div class="cart-summary">
+          <h3>Order Summary</h3>
+          <div class="summary-item">
+            <span>Subtotal</span>
+            <span>298 JOD</span>
+          </div>
+          <div class="summary-item">
+            <span>Shipping</span>
+            <span>10 JOD</span>
+          </div>
+          <div class="summary-item total">
+            <span>Total</span>
+            <span>308 JOD</span>
+          </div>
+          <a href="checkout.html" class="checkout-btn">Proceed to Checkout</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <hr>
+    <nav>
+      <a href="contact.html">Contact</a> |
+      <a href="about.html">About</a> |
+      <a href="faq.html">FAQ</a> |
+      <a href="terms.html">Terms</a>
+    </nav>
+    <p>&copy; 2025 SEGMA STORE</p>
+  </footer>
+
+  <script>
+    document.querySelector('.search-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const query = this.querySelector('input[name="query"]').value.trim();
+      if (query) {
+        console.log("Search for:", query); 
+      }
+    });
+
+    function toggleMenu() {
+      var menu = document.getElementById('dropdownMenu');
+      if (menu.style.display === 'block') {
+        menu.style.display = 'none';
+      } else {
+        menu.style.display = 'block';
+      }
+    }
+  </script>
+  <script src="js/scripts.js"></script>
+</body>
+</html>

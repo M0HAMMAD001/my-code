@@ -1,0 +1,133 @@
+<?php
+// Database connection
+$host = 'localhost';
+$dbname = 'segma_store';
+$username = 'root';
+$password = '';
+
+try {
+    $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch(PDOException $e) {
+    die("Connection failed: " . $e->getMessage());
+}
+
+// Fetch products for Comfort Corner category
+try {
+    $stmt = $pdo->prepare("SELECT * FROM products WHERE category = 'Comfort Corner'");
+    $stmt->execute();
+    $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
+} catch(PDOException $e) {
+    die("Error fetching products: " . $e->getMessage());
+}
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles1.css">
+    <title>Comfort Corner - SEGMA STORE</title>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <img src="logo.ico" alt="SEGMA Logo" />
+            <span class="logo-text">SEGMA</span>
+        </div>
+        
+        <nav class="main-nav">
+            <div class="nav-icons">
+                <a href="index.html"><span class="material-icons">home</span></a>
+            </div>
+            <ul class="items">
+                <li><a href="products.php">Products</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <form class="search-form" onsubmit="return false;">
+                <input type="text" name="query" placeholder="Search..." />
+                <button type="submit"><span class="material-icons">search</span></button>
+            </form>
+        </nav>
+
+        <div class="right-icons">
+            <div class="nav-icons">
+                <a href="wishlist.html" class="wishlist-icon"><span class="material-icons">favorite</span></a>
+                <a href="cart.html"><span class="material-icons">shopping_cart</span></a>
+                <a href="login.html"><span class="material-icons">person</span></a>
+            </div>
+            <div class="menu-icon" onclick="toggleMenu()">
+                <span class="material-icons">menu</span>
+            </div>
+        </div>
+
+        <div class="dropdown-menu" id="dropdownMenu">
+            <ul>
+                <li><a href="core-systems.php">Core Systems</a></li>
+                <li><a href="visuals-hub.php">Visuals Hub</a></li>
+                <li><a href="control-center.php">Control Center</a></li>
+                <li><a href="sound-zone.php">Sound Zone</a></li>
+                <li><a href="comfort-corner.php">Comfort Corner</a></li>
+                <li><a href="gear-up.php">Gear Up</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main>
+        <section class="category-header">
+            <h1>Comfort Corner</h1>
+            <p>Ergonomic gaming chairs and accessories for maximum comfort</p>
+        </section>
+
+        <section class="products-grid">
+            <?php if (empty($products)): ?>
+                <p class="no-products">No products available in this category.</p>
+            <?php else: ?>
+                <?php foreach ($products as $product): ?>
+                    <div class="product-card">
+                        <img src="<?php echo htmlspecialchars($product['image_url']); ?>" alt="<?php echo htmlspecialchars($product['name']); ?>">
+                        <h3><?php echo htmlspecialchars($product['name']); ?></h3>
+                        <p><?php echo htmlspecialchars($product['description']); ?></p>
+                        <p class="price">$<?php echo htmlspecialchars($product['price']); ?></p>
+                        <div class="product-actions">
+                            <a href="product-details.php?id=<?php echo $product['id']; ?>" class="view-btn">View Details</a>
+                            <button class="add-to-cart-btn" onclick="addToCart(<?php echo $product['id']; ?>)">Add to Cart</button>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            <?php endif; ?>
+        </section>
+    </main>
+
+    <footer>
+        <hr>
+        <nav>
+            <a href="contact.html">Contact</a> |
+            <a href="about.html">About</a> |
+            <a href="faq.html">FAQ</a> |
+            <a href="terms.html">Terms</a>
+        </nav>
+        <p>&copy; 2025 SEGMA STORE</p>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            var menu = document.getElementById('dropdownMenu');
+            if (menu.style.display === 'block') {
+                menu.style.display = 'none';
+            } else {
+                menu.style.display = 'block';
+            }
+        }
+
+        function addToCart(productId) {
+            // Add to cart functionality will be implemented later
+            alert('Product added to cart!');
+        }
+    </script>
+</body>
+</html> 

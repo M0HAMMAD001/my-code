@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FAQ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Merriweather', serif;
+            line-height: 1.6;
+            background-color: #0d0c0c;
+            color: #b5bbba;
+            padding: 0;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .header {
+            background-color: black;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            padding: 1rem 0;
+            margin-bottom: 2rem;
+        }
+
+        h1 {
+            text-align: center;
+            color: #b8d7e0;
+            font-size: 2rem;
+            font-weight: 600;
+            text-shadow: 2px 2px 4px #000000;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 2rem;
+        }
+
+        .faq-form {
+            background: #333;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            height: fit-content;
+            position: sticky;
+            top: 2rem;
+            border: 1px solid #444;
+        }
+
+        .form-title {
+            color: #b8d7e0;
+            margin-bottom: 2rem;
+            font-size: 1.5rem;
+            text-align: center;
+            font-weight: 600;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #b8d7e0;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+        }
+
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 1rem;
+            margin-top: 0.5rem;
+            border: 2px solid #444;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            background-color: #222;
+            color: #b5bbba;
+            font-family: 'Merriweather', serif;
+        }
+
+        input[type="text"]:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #b8d7e0;
+            background-color: #2a2a2a;
+            box-shadow: 0 0 0 3px rgba(184,215,224,0.1);
+        }
+
+        textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        button {
+            background-color: #304357;
+            color: #b8d7e0;
+            padding: 1rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            width: 100%;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 1rem;
+        }
+
+        button:hover {
+            background-color: #b8d7e0;
+            color: #304357;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        .faq-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .faq-entry {
+            background: #333;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+            border: 1px solid #444;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .faq-entry::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: #b8d7e0;
+            opacity: 0.7;
+        }
+
+        .faq-entry:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+            border-color: #b8d7e0;
+            transform: translateY(-2px);
+        }
+
+        .faq-entry .name {
+            color: #b8d7e0;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .faq-entry .name::before {
+            content: '👤';
+            font-size: 1.2rem;
+        }
+
+        .faq-entry .question {
+            color: #ccc;
+            font-size: 1rem;
+            line-height: 1.8;
+            padding-left: 1.5rem;
+            border-left: 2px solid rgba(184,215,224,0.2);
+            margin-left: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .faq-form {
+                position: static;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <h1>Frequently Asked Questions</h1>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="main-content">
+            <form class="faq-form" id="faqForm">
+                <h2 class="form-title">Submit Your Question</h2>
+                <div class="form-group">
+                    <label>
+                        Name
+                        <input type="text" id="name" name="name" required placeholder="Enter your name">
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label>
+                        Question
+                        <textarea id="question" name="question" required placeholder="Type your question here..."></textarea>
+                    </label>
+                </div>
+                <button type="submit">Submit Question</button>
+            </form>
+
+            <div id="faqList" class="faq-list"></div>
+        </div>
+    </div>
+
+    <script>
+        function loadFaqs() {
+            const faqs = JSON.parse(localStorage.getItem("faqs") || "[]");
+            const faqList = document.getElementById("faqList");
+            faqList.innerHTML = "";
+            faqs.forEach(faq => {
+                const entry = document.createElement("div");
+                entry.className = "faq-entry";
+                entry.innerHTML = `
+                    <div class="name">${faq.name}</div>
+                    <div class="question">${faq.question}</div>
+                `;
+                faqList.appendChild(entry);
+            });
+        }
+
+        document.getElementById("faqForm").addEventListener("submit", function(e) {
+            e.preventDefault();
+            const name = document.getElementById("name").value;
+            const question = document.getElementById("question").value;
+            const faqs = JSON.parse(localStorage.getItem("faqs") || "[]");
+            faqs.push({ name, question });
+            localStorage.setItem("faqs", JSON.stringify(faqs));
+            loadFaqs();
+            this.reset();
+        });
+
+        // Initial load
+        loadFaqs();
+    </script>
+</body>
+</html> 

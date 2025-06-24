@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles1.css">
+  <title>Contact Us - SEGMA STORE</title>
+  <style>
+    body {
+        font-family: 'Merriweather', serif;
+        line-height: 1.6;
+        background-color: #0d0c0c;
+        color: #b5bbba;
+        padding: 0;
+        margin: 0;
+    }
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+    }
+    .header {
+        background-color: black;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        padding: 1rem 2rem;
+        margin-bottom: 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .logo {
+        display: flex;
+        align-items: center;
+    }
+    .logo img {
+        height: 40px;
+        margin-right: 10px;
+    }
+    .logo-text {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: #b8d7e0;
+    }
+    .main-nav ul.items {
+        list-style: none;
+        display: flex;
+        gap: 1.5rem;
+    }
+    .main-nav a {
+        color: #b5bbba;
+        text-decoration: none;
+        font-size: 1rem;
+    }
+    .main-nav a:hover {
+        color: #b8d7e0;
+    }
+    .right-icons .nav-icons a, .menu-icon .material-icons {
+        color: #b5bbba;
+        margin-left: 1rem;
+        text-decoration: none;
+    }
+    .right-icons .nav-icons a:hover, .menu-icon .material-icons:hover {
+        color: #b8d7e0;
+    }
+    .menu-icon {
+        display: none;
+    }
+    .dropdown-menu {
+        display: none;
+        position: absolute;
+        top: 60px;
+        right: 2rem;
+        background-color: #222;
+        border: 1px solid #444;
+        border-radius: 8px;
+        padding: 1rem;
+        z-index: 1000;
+    }
+    .dropdown-menu ul {
+        list-style: none;
+    }
+    .dropdown-menu ul li a {
+        color: #b5bbba;
+        text-decoration: none;
+        display: block;
+        padding: 0.5rem 0;
+    }
+    .dropdown-menu ul li a:hover {
+        color: #b8d7e0;
+    }
+
+    .contact-section {
+        background: #333;
+        padding: 2rem;
+        border-radius: 12px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        border: 1px solid #444;
+        margin-top: 2rem;
+        max-width: 700px; /* Constrain form width */
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .contact-section h2 {
+        color: #b8d7e0;
+        text-align: center;
+        font-size: 1.8rem;
+        margin-bottom: 2rem; /* Increased margin */
+    }
+    .contact-form .form-group {
+        margin-bottom: 1.5rem;
+    }
+    .contact-form label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 500;
+        color: #b8d7e0;
+        font-size: 0.95rem;
+    }
+    .contact-form input[type="text"],
+    .contact-form input[type="email"],
+    .contact-form textarea {
+        width: 100%;
+        padding: 1rem;
+        margin-top: 0.5rem;
+        border: 2px solid #444;
+        border-radius: 8px;
+        font-size: 0.95rem;
+        background-color: #222;
+        color: #b5bbba;
+        font-family: 'Merriweather', serif;
+        box-sizing: border-box; /* Ensure padding doesn't expand width */
+    }
+    .contact-form input[type="text"]:focus,
+    .contact-form input[type="email"]:focus,
+    .contact-form textarea:focus {
+        outline: none;
+        border-color: #b8d7e0;
+        background-color: #2a2a2a;
+        box-shadow: 0 0 0 3px rgba(184,215,224,0.1);
+    }
+    .contact-form textarea {
+        min-height: 150px;
+        resize: vertical;
+    }
+    .contact-form button {
+        background-color: #304357;
+        color: #b8d7e0;
+        padding: 1rem 1.5rem;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 1rem;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        width: 100%;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-top: 1rem; /* Added margin-top */
+    }
+    .contact-form button:hover {
+        background-color: #b8d7e0;
+        color: #304357;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    footer {
+        text-align: center;
+        padding: 2rem 0;
+        margin-top: 2rem;
+        color: #777;
+        font-size: 0.9rem;
+        border-top: 1px solid #444;
+    }
+
+    @media (max-width: 768px) {
+        .main-nav ul.items {
+            display: none;
+        }
+        .menu-icon {
+            display: block;
+            cursor: pointer;
+        }
+        .header {
+            padding: 1rem;
+        }
+         .right-icons .nav-icons {
+            display: none;
+        }
+        .dropdown-menu.active {
+            display: block;
+        }
+        .contact-section {
+            margin-left: 1rem; /* Adjust margins for smaller screens */
+            margin-right: 1rem;
+        }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="logo">
+      <img src="logo.ico" alt="SEGMA Logo" />
+      <span class="logo-text">SEGMA</span>
+    </div>
+    
+    <nav class="main-nav">
+      <div class="nav-icons">
+      <a href="index.html"><span class="material-icons">home</span></a>
+    </div>
+      <ul class="items">
+        <li><a href="products.php">Products</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <form class="search-form" onsubmit="performSearch(event)">
+        <input type="text" name="query" id="searchQuery" placeholder="Search..." />
+        <button type="submit"><span class="material-icons">search</span></button>
+      </form>
+    </nav>
+  
+    <div class="right-icons">
+    <div class="nav-icons">
+      <a href="wishlist.html" class="wishlist-icon"><span class="material-icons">favorite</span></a>
+      <a href="cart.html"><span class="material-icons">shopping_cart</span></a>
+      <a href="login.html"><span class="material-icons">person</span></a>
+    </div>
+    <div class="menu-icon" onclick="toggleMenu()">
+      <span class="material-icons">menu</span>
+    </div>
+  </div>
+  
+    <div class="dropdown-menu" id="dropdownMenu">
+      <ul>
+        <li><a href="core-systems.php">Core Systems</a></li>
+        <li><a href="visuals-hub.php">Visuals Hub</a></li>
+        <li><a href="control-center.php">Control Center</a></li>
+        <li><a href="sound-zone.php">Sound Zone</a></li>
+        <li><a href="comfort-corner.php">Comfort Corner</a></li>
+        <li><a href="gear-up.php">Gear Up</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <div class="container">
+    <main>
+      <section class="contact-section">
+        <h2>Contact Us</h2>
+        <form action="contact.php" method="POST" class="contact-form">
+          <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required placeholder="Enter your name">
+          </div>
+          <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required placeholder="Enter your email">
+          </div>
+          <div class="form-group">
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" rows="5" required placeholder="Type your message here..."></textarea>
+          </div>
+          <button type="submit">Send Message</button>
+        </form>
+      </section>
+    </main>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 SEGMA STORE</p>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      const dropdownMenu = document.getElementById('dropdownMenu');
+      dropdownMenu.classList.toggle('active');
+    }
+
+    function performSearch(event) {
+        event.preventDefault();
+        const query = document.getElementById('searchQuery').value;
+        if(query) {
+            alert('Searching for: ' + query); 
+        }
+    }
+
+    // DOM-based XSS vulnerability script
+    function getQueryParam(name) {
+      const url = new URL(window.location.href);
+      return url.searchParams.get(name);
+    }
+    var msg = getQueryParam('msg');
+    if (msg) {
+      const msgDiv = document.createElement('div');
+      // Sanitize msg before injecting to prevent XSS, or ensure it's plain text
+      // For this experiment, if it's meant to be vulnerable, keep as is.
+      // For a secure version, you would do: msgDiv.textContent = msg;
+      msgDiv.innerHTML = msg; // Potentially vulnerable line
+      // Style the injected div to be less intrusive if needed
+      msgDiv.style.position = 'fixed';
+      msgDiv.style.bottom = '10px';
+      msgDiv.style.right = '10px';
+      msgDiv.style.padding = '10px';
+      msgDiv.style.background = '#ffc107'; // A warning color
+      msgDiv.style.color = '#333';
+      msgDiv.style.border = '1px solid #e0a800';
+      msgDiv.style.borderRadius = '5px';
+      msgDiv.style.zIndex = '2000'; // Ensure it's on top
+      document.body.appendChild(msgDiv);
+      setTimeout(() => msgDiv.remove(), 5000); // Auto-remove after 5 seconds
+    }
+  </script>
+</body>
+</html>
